@@ -1,0 +1,19 @@
+package ua.syt0r.bullethell;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+
+public class Utils {
+    public static BitmapFont generateFont(String fontPath, int size){
+        FileHandle fontFile = Gdx.files.internal(fontPath);
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
+        FreeTypeFontGenerator.FreeTypeFontParameter params = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        params.size = size;
+        params.genMipMaps = true;
+        BitmapFont f = generator.generateFont(params);
+        generator.dispose();
+        return f;
+    }
+}
